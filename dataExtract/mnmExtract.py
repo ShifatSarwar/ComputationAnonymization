@@ -3,9 +3,10 @@ import os
 import time
 from functions.csvEntry import addLine
 import sys
-path = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/tests/'
-pathMain = '/Users/shifatsarwar/Downloads/Job/graphfunction/'       
+path = '../dataList/tests/'
+pathMain = '../'       
 
+# Combines the three graphs 1,8 and 9
 def runGraph189(file1):
     graphNum = [1,8,9]
     updateValues=[file1, file1, file1]
@@ -24,7 +25,7 @@ def runGraph189(file1):
         addLine(path+name+'.csv',dataLine)
         index=index+1
 
-
+# Combines the four graphs 2,3,5 and 6
 def runGraph2356(file1, file2, file1E, file2E):
     inputFiles=[file1, file2]
     inputFiles2=[file1E, file2E]
@@ -52,7 +53,7 @@ def runGraph2356(file1, file2, file1E, file2E):
         addLine(path+name+'.csv',dataLine)
         index=index+1
 
-
+# Combines the three graphs 4,7 and 10
 def runGraph4710(file1, file2, file3, file1E, file2E, file3E):
     inputFiles=[file1, file2, file3]
     inputFiles2=[file1, file2, file3]

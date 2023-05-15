@@ -3,7 +3,7 @@ import os
 import time
 from functions.csvEntry import addLine
 import sys
-path = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/'    
+path = '../dataList/'    
 
 def runGraph01(file1):
     inputSize = os.path.getsize(file1)

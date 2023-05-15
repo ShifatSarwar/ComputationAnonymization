@@ -4,8 +4,8 @@ import time
 from functions.csvEntry import addLine
 import sys
 # from mnmExtract import runGraph2356
-path = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/'
-pathMain = '/Users/shifatsarwar/Downloads/Job/graphfunction/'       
+path = '../dataList/'
+pathMain = '../'       
 
 def runGraph01to4(file1):
     array=[]

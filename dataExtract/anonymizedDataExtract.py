@@ -4,7 +4,10 @@ import os
 import time
 from functions.csvEntry import addLine
 import sys
-path = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/tests/'     
+path = '../dataList/tests/'     
+
+# Extracts data from all graphs after anonymization capturing input_size
+# time, output_size
 
 def runGraph01(file1, level):
     inputSize = os.path.getsize(file1)
