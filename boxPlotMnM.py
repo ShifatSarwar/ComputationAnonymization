@@ -5,10 +5,11 @@ import os
 from random import choice
 import random
 from functions.csvEntry import addLine
-path = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/tests/'
-dataPath = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/arrayFiles/array111'
-dataPath2 = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/arrayFiles/array222'
+path = 'dataList/tests/'
+dataPath = 'dataList/arrayFiles/array111'
+dataPath2 = 'dataList/arrayFiles/array222'
 
+# Mixing two graphs 1 and 9
 def runMnM19(updateValues):
     steps = [0,0]
     graphNums = [1,2]
@@ -45,6 +46,7 @@ def runMnM19(updateValues):
     array.append(timeStamps)
     return array
 
+# Mixing two graphs 2 and 4
 def runMnM24(updateValues):
     steps = [0,0]
     index = 4
@@ -78,6 +80,7 @@ def runMnM24(updateValues):
     array.append(timeStamps)
     return array
 
+# Mixing two graphs 1 and 8
 def runMnM18(updateValues):
     steps = [0,0]
     index = 4
@@ -112,6 +115,7 @@ def runMnM18(updateValues):
     array.append(timeStamps)
     return array
 
+# Mixing 1, 2, 3, and 4 weighted
 def genValGraph(runs):
     index = 0
     while index < runs:
@@ -132,7 +136,7 @@ def genValGraph(runs):
 
         index = index + 1
 
-
+# Mixing 1, 2, 3, and 4 weighted
 def genValGraphSame(runs):
     index = 0
     while index < runs:
