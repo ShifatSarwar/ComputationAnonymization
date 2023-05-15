@@ -2,10 +2,11 @@ import csv
 from hashlib import sha256
 import os
 from Crypto.Cipher import AES
-pathMain = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/arrayFiles/'
-pathEncrypted = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/encryptedFiles/'
-pathCompressed = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/compressedFiles/'
+pathMain = '../dataList/arrayFiles/'
+pathEncrypted = '../dataList/encryptedFiles/'
+pathCompressed = '../dataList/compressedFiles/'
 
+# Generates a list of encrypted files for input
 def encryptArray(arrayLoc):
     password = 'myfile'
     with open(arrayLoc, 'rb') as f:

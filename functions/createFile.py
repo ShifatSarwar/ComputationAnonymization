@@ -1,7 +1,8 @@
 import csv
-pathMain = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/arrayFiles/'
-path = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/arrayFiles/'
+pathMain = '../dataList/arrayFiles/'
+path = '../dataList/arrayFiles/'
 
+# Creates 100s of random values array from three csv files with lots of random values.
 def createFiles():
     arrayOfarray = []
     arrayOfarray2 = []

@@ -5,9 +5,9 @@ import os
 from Crypto.Cipher import AES
 from numpy import random
 from compress import Compressor
-decryptLoc = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/decryptLoc/'
-encryptLoc = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/encryptedFiles/'
-compressedLoc = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/compressedFiles/'
+decryptLoc = '../dataList/decryptLoc/'
+encryptLoc = '../dataList/encryptedFiles/'
+compressedLoc = '../dataList/compressedFiles/'
 
 #Merge Sort
 def sortArray(array):
@@ -19,6 +19,7 @@ def sortArray(array):
         array[i], array[min_idx] = array[min_idx], array[i] 
     return array
 
+# Calculates contents of a single array
 def calculateContentsSingle(array):
     index = 0
     for i in array:
@@ -26,11 +27,12 @@ def calculateContentsSingle(array):
         index = index + 1
     return array
 
+# Runs hash operation on array product
 def hashResults(product):
     hash_object = sha256((str(product)).encode())
     return hash_object.hexdigest()
 
-
+# Calculates product of two arrays
 def calculateContents(array1, array2):
     array1 = np.array(array1)
     array2 = np.array(array2)
@@ -139,7 +141,7 @@ def decompressGZip(myFile):
     return output
     
 
-
+# Fixes array length after encryption/decryption/compression/decompression
 def fixLength(array1, array2):
     length = [len(array1), len(array2)]
     length.sort()
@@ -149,7 +151,8 @@ def fixLength(array1, array2):
         array2.pop(0)
     array = [array1, array2]
     return array
-        
+
+# Use AES to encrypt file   
 def encryptAESFile(loc):
     rand = random.randint(1,1500)
     password = 'myfile'

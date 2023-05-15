@@ -4,8 +4,8 @@ from csvEntry import addLine
 
 array = []   
 array2 = [] 
-pathMain = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/tests/graph05.csv'
-result = '/Users/shifatsarwar/Downloads/Job/graphfunction/dataList/tests/results.csv'
+pathMain = '../dataList/tests/graph05.csv'
+result = '../dataList/tests/results.csv'
 
 with open(pathMain) as f:
     reader = csv.reader(f) 
