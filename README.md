@@ -1,4 +1,4 @@
-# Comouflage
+# Camouflage
 Research Project for Anonymizing Computation
 
 The idea is to introduce fake nodes into existing computation nodes for deluding any ML algorithm from detecting
