@@ -217,28 +217,28 @@ def process2356W(updateValues):
             steps[0] = steps[0] + 1
             if steps[0] == 3:
                 timeStamps[0] = time.time() - timeStamps[0]
-                weights = updateWeight(weights, 0)
+                weights = graphFunctions.updateWeight(weights, 0)
 
         elif chooseFun == 2:
             updateValues[1] = graph03(steps[1], updateValues[1])
             steps[1] = steps[1] + 1
             if steps[1] == 4:
                 timeStamps[1] = time.time() - timeStamps[1]
-                weights = updateWeight(weights, 1)
+                weights = graphFunctions.updateWeight(weights, 1)
 
         elif chooseFun == 3:
             updateValues[2] = graph05(steps[2], updateValues[2])
             steps[2] = steps[2] + 1
             if steps[2] == 6:
                 timeStamps[2] = time.time() - timeStamps[2]
-                weights = updateWeight(weights, 2)
+                weights = graphFunctions.updateWeight(weights, 2)
 
         elif chooseFun == 4:
             updateValues[3] = graph06(steps[3], updateValues[3])
             steps[3] = steps[3] + 1
             if steps[3] == 5:
                 timeStamps[3] = time.time() - timeStamps[3]
-                weights = updateWeight(weights, 3)
+                weights = graphFunctions.updateWeight(weights, 3)
 
         index = index-1
     array.append(updateValues)
@@ -263,21 +263,21 @@ def process4710W(updateValues):
             steps[0] = steps[0] + 1
             if steps[0] == 2:
                 timeStamps[0] = time.time() - timeStamps[0]
-                weights = updateWeight(weights, 0)
+                weights = graphFunctions.updateWeight(weights, 0)
 
         elif chooseFun == 2:
             updateValues[1] = graph07(steps[1], updateValues[1])
             steps[1] = steps[1] + 1
             if steps[1] == 5:
                 timeStamps[1] = time.time() - timeStamps[1]
-                weights = updateWeight(weights, 1)
+                weights = graphFunctions.updateWeight(weights, 1)
 
         elif chooseFun == 3:
             updateValues[2] = graph10(steps[2], updateValues[2])
             steps[2] = steps[2] + 1
             if steps[2] == 7:
                 timeStamps[2] = time.time() - timeStamps[2]
-                weights = updateWeight(weights, 2)
+                weights = graphFunctions.updateWeight(weights, 2)
 
         index = index-1
     array.append(updateValues)
