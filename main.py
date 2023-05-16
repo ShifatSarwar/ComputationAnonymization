@@ -6,16 +6,9 @@ from dataExtract.real import dataExtractFake
 from dataExtract.real import dataExtractMix
 # Use this for Hybrid Anonymization
 from dataExtract.real import dataExtractHybrid
-
-# .generated indicates using the generated graphs. 
-from dataExtract.generated import dataExtractSimple
-from dataExtract.generated import dataExtractFake
-# Use this for just mixing two graphs
-from dataExtract.generated import dataExtractMix
-# Use this for Hybrid Anonymization
-from dataExtract.generated import dataExtractHybrid
 from dataExtract.generated.graphNodes import *
 import random
+import scenarioRunner
 
 # Choose number of loops to collect graph data
 # For real world graph choose the name of graph 
@@ -47,53 +40,67 @@ def anonymize_real_world(mode, level, runs):
         while idx < runs:
             dataExtractHybrid.runGraph13810(idx, level)
             idx+=1
-
+            
+# Allows the running of custom generated graph for the purpose of 
+# this research. You can find the exact graphs in baseGraphs folder and
+# anonymization folder.
+def anonymize_custom(mode, level, runs):
+    if mode == 0:
+        scenarioRunner.runGraphInitial(runs)
+    elif mode == 1:
+        scenarioRunner.runGraphAnonymizedInitial(runs, level)
+    elif mode == 2:
+        scenarioRunner.runGraphMnMInitial(runs)
+    else:
+        scenarioRunner.runGraphHybrid(runs, level)        
+  
 # Allows the creation, addition and compilation of graphs
 class Camouflage:
 
     def __init__(self):
-        self.graph1 = []
-        self.graph2 = []
-        self.graph3 = []
+        self.graph = []
 
-    # Creates random graph instances
     def CreateGraph(self):
-        self.graph1.append('basic_calculations')      
-        self.graph1.append('sorting')
-        self.graph1.append('encryption')
-        self.graph1.append('decryption')
-        self.graph1.append('compression')
+        self.graph.append('basic_calculations')
+        self.graph.append('sorting')
+        self.graph.append('encryption')
+        self.graph.append('decryption')
+        self.graph.append('compression')
 
     # Function name selects the return value of the generated graph
     # after it runs through all operations.
     # Current available functions are Sorting, Encryption, Addition,
     # Multuplication, 
-    def ConnectNodes(self, functionName,level):
+    def ConnectNodes(self, functionName, level):
         if level == '0':
-            level = random.randint(1,5) - 1
+            level = random.randint(1, 5) - 1
         else:
-            level = level -1 
+            level = int(level) - 1
+
         graph2 = []
         while level > 0:
-            g = [0,1,2,3,4]
-            chooseFun = random.choices(g)
-            graph2 = self.append(chooseFun)
-            random_val -= 1
+            g = [0, 1, 2, 3, 4]
+            chooseFun = random.choice(g)
+            graph2.append(self.graph[chooseFun])
+            level -= 1
+
         graph2.append(functionName)
-        self.graph1 = graph2
-        
+        self.graph = graph2      
 
     def Compile(self):
         encrypt = False
         compress = False
+        allow = True
         for x in self.graph:
             if compress:
                 print('Nodes cannot be connected.')
                 self.graph = []
+                allow = False
                 break
             if encrypt and x != 'decryption':
                 print('Nodes cannot be connected.')
                 self.graph = []
+                allow = False
                 break
             elif x == 'encryption':
                 encrypt = True
@@ -101,10 +108,14 @@ class Camouflage:
                 if not encrypt:
                     print('Nodes cannot be connected.')
                     self.graph = []
+                    allow = False
                     break
                 encrypt = False
             elif x == 'compression':
                 compress = True
+        if allow:
+            for c in self.graph:
+                print(c)
  
     def Anonymize(self, mode, data, level):
         output = data
@@ -135,20 +146,25 @@ class Camouflage:
                 elif x =='compression':
                     output = compressGZip(output)         
             level = checkAnonymity(level, True)
-        
-        elif mode == 2:
-            pass
+    
         return output
+        
     
-    
-
-
 if __name__ == '__main__':
     # Choose mode 0 for None.
     # Choose mode 1 for Remodel.
     # Choose mode 2 for Mixing.
     # Choose mode 3 for Hybrid.
     anonymize_real_world(0, 3, 20)
+    anonymize_custom(0,3,30)
+    arr = [5,3,4,6,8,9]
+    # Create a random graph and test if the computation can be identified without anonymization     
+    G = Camouflage()
+    G.CreateGraph()
+    G.ConnectNodes('basic_calculations',3)
+    G.Compile()
+    # Calculate InputSize, OutputSize and Time for randomly generated graphs    
+    G.Anonymize(0, arr, 0)
     
         
         
